@@ -1,0 +1,9 @@
+name: CD Fake
+on:
+  workflow_dispatch
+jobs:
+  deploy-fake:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy fake no ambiente
+        run: echo "Realizando deploy fake no ambiente ${{ vars.AMBIENTE_DEPLOY }}"
