@@ -4,6 +4,7 @@ on:
 jobs:
   deploy-fake:
     runs-on: ubuntu-latest
+    environment: Hml
     steps:
       - name: Deploy fake no ambiente
         run: echo "Realizando deploy fake no ambiente ${{ vars.AMBIENTE_DEPLOY }}"
