@@ -1,17 +1,22 @@
 name: CD Fake
 on:
   workflow_dispatch:
-    inputs:
-      ambiente:
-        type: choice
-        default: Hml
-        options:
-          - Hml
-          - Prd
 jobs:
-  deploy-fake:
+  deploy-hml-fake:
     runs-on: ubuntu-latest
     environment: Hml
     steps:
       - name: Deploy fake no ambiente
-        run: echo "Realizando deploy fake no ambiente ${{ inputs.ambiente }}"
+        run: echo "Realizando deploy fake no ambiente ${{ vars.AMBIENTE_DEPLOY }}"
+  testes-hml-fake:
+    runs-on: ubuntu-latest
+    environment: Hml
+    steps:
+      - name: Testes fake no ambiente
+        run: echo "Realizando testes fake no ambiente ${{ vars.AMBIENTE_DEPLOY }}"
+  deploy-prd-fake:
+    runs-on: ubuntu-latest
+    environment: Prd
+    steps:
+      - name: Deploy fake no ambiente
+        run: echo "Realizando deploy fake no ambiente ${{ vars.AMBIENTE_DEPLOY }}"
