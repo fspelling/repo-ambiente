@@ -1,0 +1,14 @@
+name: Deploy Fake
+on:
+  workflow_call:
+    inputs:
+      ambiente:
+        type: string
+        required: true
+jobs:
+  deploy-fake:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.ambiente }}
+    steps:
+      - name: Deploy fake no ambiente
+        run: echo "Realizando deploy fake no ambiente ${{ vars.AMBIENTE_DEPLOY }}"
