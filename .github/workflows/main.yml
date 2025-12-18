@@ -3,11 +3,9 @@ on:
   workflow_dispatch:
 jobs:
   deploy-hml-fake:
-    runs-on: ubuntu-latest
-    environment: Hml
-    steps:
-      - name: Deploy fake no ambiente
-        run: echo "Realizando deploy fake no ambiente ${{ vars.AMBIENTE_DEPLOY }}"
+    uses: fspelling/repo-ambiente/.github/workflows/cd-deploy-fake.yml@main
+    with:
+        ambiente: Hml
   testes-hml-fake:
     needs: [deploy-hml-fake]
     runs-on: ubuntu-latest
@@ -17,8 +15,6 @@ jobs:
         run: echo "Realizando testes fake no ambiente ${{ vars.AMBIENTE_DEPLOY }}"
   deploy-prd-fake:
     needs: [testes-hml-fake]
-    runs-on: ubuntu-latest
-    environment: Prd
-    steps:
-      - name: Deploy fake no ambiente
-        run: echo "Realizando deploy fake no ambiente ${{ vars.AMBIENTE_DEPLOY }}"
+    uses: fspelling/repo-ambiente/.github/workflows/cd-deploy-fake.yml@main
+    with:
+        ambiente: Prd
