@@ -9,12 +9,14 @@ jobs:
       - name: Deploy fake no ambiente
         run: echo "Realizando deploy fake no ambiente ${{ vars.AMBIENTE_DEPLOY }}"
   testes-hml-fake:
+    needs: [deploy-hml-fake]
     runs-on: ubuntu-latest
     environment: Hml
     steps:
       - name: Testes fake no ambiente
         run: echo "Realizando testes fake no ambiente ${{ vars.AMBIENTE_DEPLOY }}"
   deploy-prd-fake:
+    needs: [testes-hml-fake]
     runs-on: ubuntu-latest
     environment: Prd
     steps:
