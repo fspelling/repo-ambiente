@@ -9,7 +9,9 @@ jobs:
   testes-hml-fake:
     needs: [deploy-hml-fake]
     runs-on: ubuntu-latest
-    environment: Hml
+    environment:
+      name: Hml
+      url: https://hml.devopspro.com.br
     steps:
       - name: Testes fake no ambiente
         run: echo "Realizando testes fake no ambiente ${{ vars.AMBIENTE_DEPLOY }}"
