@@ -8,6 +8,9 @@ on:
 jobs:
   deploy-fake:
     runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.ambiente }}
+      url: https://${{ inputs.ambiente }}.devopspro.com.br
     steps:
       - name: Deploy fake no ambiente
         run: echo "Realizando deploy fake no ambiente ${{ vars.AMBIENTE_DEPLOY }}"
